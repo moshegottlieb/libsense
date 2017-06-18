@@ -1,5 +1,7 @@
 build/
 .d/
+examples/senseimage
+examples/sensepaint
 
 # Prerequisites
 *.d
