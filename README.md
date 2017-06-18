@@ -47,4 +47,4 @@ Since the C++ code is just a wrapper - I decided to include it as an inline head
 
 ## Contributing to libsense
 
-Yes please! see the [guidelines](CONTRIBUTING.md) first.
+Yes please! see the [guideline](CONTRIBUTING.md) first.
