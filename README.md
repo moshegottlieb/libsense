@@ -2,7 +2,7 @@
 ### Sense HAT for the Raspberry Pi C/C++ API
 I don't know about you guys, but I'm not much of a python guy.<br/>
 While I can code in just about any programming language - I tend to stick to compiled languages.<br/>
-Anyway, everything is written in C and wrapped in some other language binding? right? that's the only way to make a cross-language project.
+Anyway, everything is written in C and wrapped in some other language binding. Right? that's the only way to make a cross-language project.
 
 When I got my [Sense HAT](https://www.raspberrypi.org/products/sense-hat/) for my (4th? 5th? dunno) [Raspberry Pi](https://www.raspberrypi.org/) - I was surprised to see it only came with python API wrappers.<br/>
 It even comes with an emulator which is very cool, however, it didn't feel right to me.<br/>
