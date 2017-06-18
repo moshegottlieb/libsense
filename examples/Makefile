@@ -12,7 +12,7 @@ DEPDIR := .d
 $(shell mkdir -p $(DEPDIR) >/dev/null)
 $(shell mkdir -p $(BUILDDIR) >/dev/null)
 
-TARGETS=senseimage sensepaint
+TARGETS=senseimage sensepaint sensetext
 
 all: $(TARGETS)
 
@@ -45,3 +45,7 @@ senseimage: $(OBJC) $(OBJCXX)
 sensepaint: $(OBJC) $(OBJCXX)
 	@echo [LINK] $@
 	@$(CXX) $(CXXFLAGS) $(CFLAGS) $(BUILDDIR)/sensepaint.o $(LDFLAGS) -o $@
+
+sensetext: $(OBJC) $(OBJCXX)
+	@echo [LINK] $@
+	@$(CC) $(CFLAGS) $(BUILDDIR)/sensetext.o $(LDFLAGS) -o $@

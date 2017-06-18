@@ -30,13 +30,18 @@ HTML Documentation will be available in the `docs/html` folder.<br/>
 ## Examples
 See the `examples/` directory.<br/>
 Type:<br/>
-`make` to build both examples, `sensepaint` and `senseimage`.<br/>
-Both examples require the [Image Magick](https://www.imagemagick.org/) [Image Wand](https://www.imagemagick.org/script/magick-wand.php) library (`sudo apt-get install libmagickwand-dev` on Raspbian and _probably_ Ubuntu).<br/>
+`make` to build both examples, `sensepaint`,`senseimage` and `sensetext`.<br/>
+Both `sensepaint` and `senseimage` require the [Image Wand](https://www.imagemagick.org/script/magick-wand.php) library (`sudo apt-get install libmagickwand-dev` on Raspbian and _probably_ Ubuntu), it's a part of the [Image Magick](https://www.imagemagick.org/) project.<br/>
 Once built, try something like:<br/>
 `./sensepaint green` or `./sensepaint "#ffbb00"` to paint all LEDs.<br/>
 `./senseimage sense_logo.png` will draw the logo on the LED matrix.<br/>
 The later will resize any image to 8x8 and draw it on the matrix.<br/>
 Don't expect your DSLR camera photos to look very good using this method.<br/>
+How about writing something?<br/>
+Luckily, Jared Sanson has a nice collection of 6x8 fonts exactly for this purpose (well, I suppose not _exactly_ for this purpose).<br/>
+It's available [here](http://jared.geek.nz/2014/jan/custom-fonts-for-microcontrollers) and it's used by the `sensetext` example.<br/>
+Just type something like: `./sensetext hello world!` and enjoy the magic of text printing out on your 8x8 LED matrix.<br/>
+I do not recommend on reading [Ulysses](https://en.wikipedia.org/wiki/Ulysses_(novel)) this way.
 <br/>
 ## C++
 Writing shared libraries in C is easy.<br/>
