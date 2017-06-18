@@ -1,4 +1,4 @@
-# libsense
+# libsense ![logo](https://raw.githubusercontent.com/moshegottlieb/libsense/master/examples/sense_logo.png)
 ### Sense HAT for the Raspberry Pi C/C++ API
 I don't know about you guys, but I'm not much of a python guy.<br/>
 While I can code in just about any programming language - I tend to stick to compiled languages.<br/>
