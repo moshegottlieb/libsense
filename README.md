@@ -20,6 +20,7 @@ Then from your C files:<br/>
 `#include <sense/fb.h>`<br/>
 Or from your C++ files (can use the C version too, of course):<br/>
 `#include <sense/fb.hpp>`<br/>
+Link with `-lsense`.<br/>
 
 ## Documentation
 To see the [doxygen](http://doxygen.org/) docs available as well, to build just type:<br/>
