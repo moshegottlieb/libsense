@@ -1,6 +1,5 @@
 # libsense
 ### Sense HAT for the Raspberry Pi C/C++ API
-
 I don't know about you guys, but I'm not much of a python guy.<br/>
 While I can code in just about any programming language - I tend to stick to compiled languages.<br/>
 Anyway, everything is written in C and wrapped in some other language binding? right? that's the only way to make a cross-language project.
@@ -21,15 +20,13 @@ Then from your C files:<br/>
 `#include <sense/fb.h>`<br/>
 Or from your C++ files (can use the C version too, of course):<br/>
 `#include <sense/fb.hpp>`<br/>
-<br/>
+
 ## Documentation
-<br/>
 To see the [doxygen](http://doxygen.org/) docs available as well, to build just type:<br/>
 `make doc`<br/>
 HTML Documentation will be available in the `docs/html` folder.<br/>
 <br/>
 ## Examples
-<br/>
 See the `examples/` directory.<br/>
 Type:<br/>
 `make` to build both examples, `sensepaint` and `senseimage`.<br/>
