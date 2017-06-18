@@ -44,3 +44,7 @@ The rules for when to bump up the so name is simple and clear.<br/>
 When dealing with C++ - that's not the case.<br/>
 The list of things that break binary compatibility is very long, and it's super easy to break.<br/>
 Since the C++ code is just a wrapper - I decided to include it as an inline header, that way the shared library doesn't have any C++ issues.<br/>
+
+## Contributing to libsense
+
+Yes please! see the [guidelines](CONTRIBUTING.md) first.
