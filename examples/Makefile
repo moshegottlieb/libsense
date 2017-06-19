@@ -1,4 +1,5 @@
-LDFLAGS+=-lsense `pkg-config --libs MagickWand`
+LDFLAGS+=-lsense
+WAND_LDFLAGS=`pkg-config --libs MagickWand`
 CFLAGS+=-g `pkg-config --cflags MagickWand`
 CXXFLAGS+=-std=c++11
 BUILDDIR=build
@@ -40,11 +41,11 @@ $(DEPDIR)/%.d: ;
 
 senseimage: $(OBJC) $(OBJCXX)
 	@echo [LINK] $@
-	@$(CXX) $(CXXFLAGS) $(CFLAGS) $(BUILDDIR)/senseimage.o $(LDFLAGS) -o $@
+	@$(CXX) $(CXXFLAGS) $(CFLAGS) $(BUILDDIR)/senseimage.o $(LDFLAGS) $(WAND_LDFLAGS) -o $@
 
 sensepaint: $(OBJC) $(OBJCXX)
 	@echo [LINK] $@
-	@$(CXX) $(CXXFLAGS) $(CFLAGS) $(BUILDDIR)/sensepaint.o $(LDFLAGS) -o $@
+	@$(CXX) $(CXXFLAGS) $(CFLAGS) $(BUILDDIR)/sensepaint.o $(LDFLAGS) $(WAND_LDFLAGS) -o $@
 
 sensetext: $(OBJC) $(OBJCXX)
 	@echo [LINK] $@
