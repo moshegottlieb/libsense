@@ -59,6 +59,15 @@ The bitmap buffer is an array of size `SENSE_PIXELS` of `uint16_t` RGB 565 value
 @return Internal buffer (`SENSE_PIXELS` long)
 */
 uint16_t* sense_bitmap_get_buffer(sense_bitmap_t bitmap);
+
+/**
+Copy bitmap.<br/>
+Can be used to copy framebuffer to memory and vice versa.<br/>
+The behavior is undefined if dst == src
+@param dst Destination bitmap
+@param src Source bitmap
+*/
+void sense_bitmap_cpy(sense_bitmap_t dst,const sense_bitmap_t src);
 /**
 * Make a color from a floating point RGB represnetation
 * @param r Red value `(0..1)`

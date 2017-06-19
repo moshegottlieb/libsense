@@ -40,7 +40,7 @@ Don't expect your DSLR camera photos to look very good using this method.<br/>
 How about writing something?<br/>
 Luckily, Jared Sanson has a nice collection of 6x8 fonts exactly for this purpose (well, I suppose not _exactly_ for this purpose).<br/>
 It's available [here](http://jared.geek.nz/2014/jan/custom-fonts-for-microcontrollers) and it's used by the `sensetext` example.<br/>
-Just type something like: `./sensetext hello world!` and enjoy the magic of text printing out on your 8x8 LED matrix.<br/>
+Just type something like: `./sensetext "hello world!"` and enjoy the magic of text printing out on your 8x8 LED matrix.<br/>
 I do not recommend on reading [Ulysses](https://en.wikipedia.org/wiki/Ulysses_(novel)) this way.
 <br/>
 ## C++

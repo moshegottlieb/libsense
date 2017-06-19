@@ -4,7 +4,7 @@ OBJ = $(patsubst %.c,$(BUILDDIR)/%.o,$(SOURCES))
 PREFIX?=/usr
 CFLAGS+=-g -fPIC
 VERSION_MAJ=1
-VERSION_MIN=0.0
+VERSION_MIN=0.1
 TARGET_NAME=libsense
 BUILDDIR=build
 DEPFLAGS = -MT $@ -MMD -MP -MF $(DEPDIR)/$*.d
@@ -62,6 +62,9 @@ install: $(TARGET) real_uninstall
 	@echo [INSTALL] $(TARGET_NAME)
 	@mkdir -p "$(PREFIX)/include/sense"
 	@cp $(TARGET) "$(PREFIX)/lib/"
+	@rm -f "$(PREFIX)/lib/$(TARGET_SO_NAME)"
+	@rm -f "$(PREFIX)/lib/$(TARGET_SO_NAME).*"
+	@rm -f "$(PREFIX)/lib/$(TARGET_SO)"
 	@ln -s "$(PREFIX)/lib/$(TARGET_FULL_NAME)" "$(PREFIX)/lib/$(TARGET_SO_NAME)"
 	@ln -s "$(PREFIX)/lib/$(TARGET_FULL_NAME)" "$(PREFIX)/lib/$(TARGET_SO)"
 	@cp *.h *.hpp "$(PREFIX)/include/sense"
