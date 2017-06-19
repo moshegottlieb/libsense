@@ -5,7 +5,7 @@
 #include <string.h>
 
 // Replace with any of the fonts in "fonts" directory
-#include "fonts/zxpix_font.h"
+#include "fonts/HUNTER_font.h"
 #define CHAR_WIDTH 6
 #define CHAR_HEIGHT 8
 #define SCROLL_DELAY 60
