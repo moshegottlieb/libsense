@@ -39,14 +39,14 @@ $(DEPDIR)/%.d: ;
 
 .PHONY: clean
 
-senseimage: $(OBJC) $(OBJCXX)
+senseimage: $(BUILDDIR)/senseimage.o
 	@echo [LINK] $@
 	@$(CXX) $(CXXFLAGS) $(CFLAGS) $(BUILDDIR)/senseimage.o $(LDFLAGS) $(WAND_LDFLAGS) -o $@
 
-sensepaint: $(OBJC) $(OBJCXX)
+sensepaint: $(BUILDDIR)/sensepaint.o
 	@echo [LINK] $@
 	@$(CXX) $(CXXFLAGS) $(CFLAGS) $(BUILDDIR)/sensepaint.o $(LDFLAGS) $(WAND_LDFLAGS) -o $@
 
-sensetext: $(OBJC) $(OBJCXX)
+sensetext: $(BUILDDIR)/sensetext.o
 	@echo [LINK] $@
 	@$(CC) $(CFLAGS) $(BUILDDIR)/sensetext.o $(LDFLAGS) -o $@

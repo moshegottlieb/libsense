@@ -5,11 +5,18 @@
 #include <string.h>
 
 // Replace with any of the fonts in "fonts" directory
-#include "fonts/HUNTER_font.h"
-#define CHAR_WIDTH 6
+#include "fonts/5x5_font.h"
+
+//#include "fonts/BMSPA_font.h"
+//#define CHAR_WIDTH 8
+
+#define CHAR_WIDTH (sizeof(font) / 96)
 #define CHAR_HEIGHT 8
-#define SCROLL_DELAY 60
-#define LETTER_WIDTH (CHAR_WIDTH + 1)
+#define SCROLL_DELAY 100
+#define LETTER_SPACE 1
+#define LETTER_WIDTH (CHAR_WIDTH + LETTER_SPACE)
+
+
 
 void draw(char c,int x,int y,sense_color_t color,sense_bitmap_t bitmap);
 const unsigned char* character(char c);
@@ -24,7 +31,7 @@ int main(int argc,char** argv){
         fprintf(stderr,"Could not allocate framebuffer: %s\n",sense_strerror(sense_errno()));
         exit(1);
     }
-    sense_color_t color = sense_make_color_rgb(64,64,64);
+    sense_color_t color = sense_make_color_rgb(0xff,0xff,0);
     sense_bitmap_t buffer = sense_alloc_bitmap();
     char* word = argv[1];
     int idx;
@@ -61,10 +68,10 @@ const unsigned char* character(char c){
 void draw(char c,int x,int y,sense_color_t color,sense_bitmap_t bitmap) {
     int i,j;
     const unsigned char* chr = character(c);
-    for (j=0 + ((1+x)<0?(1+x)*-1:0); j<CHAR_WIDTH && (1+j+x) < SENSE_BITMAP_WIDTH; ++j) {
+    for (j=0 + ((LETTER_SPACE+x)<0?(1+x)*-1:0); j<CHAR_WIDTH && (1+j+x) < SENSE_BITMAP_WIDTH; ++j) {
         for (i=0 + (y<0?y*-1:0); i<CHAR_HEIGHT && (i+y < SENSE_BITMAP_HEIGHT); ++i) {
             if (chr[j] & (1<<i)) {
-                sense_bitmap_set_pixel(bitmap,1+j+x, i+y,color);
+                sense_bitmap_set_pixel(bitmap,LETTER_SPACE +j+x, i+y,color);
             }
         }
     }
