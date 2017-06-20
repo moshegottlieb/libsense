@@ -21,14 +21,14 @@ Currently, since libsense only works with the LED matrix (as a framebuffer), the
 However, future versions will require `i2c`, in Raspbian:<br/>
 `sudo apt-get install libi2c-dev` and also: `sudo raspi-config` --> advanced options --> enable i2c<br/>
 <br/>
-That said, the build process is dead simple:<br/>
+That said, the build process is dead simple:<br/><br/>
 `make`<br/>
 `sudo make install`<br/>
 <br/>
-Then from your C files:<br/>
+Then from your C files:<br/><br/>
 `#include <sense/fb.h>`<br/>
-Or from your C++ files (can use the C version too, of course):<br/>
-`#include <sense/fb.hpp>`<br/>
+Or from your C++ files (can use the C version too, of course):<br/><br/>
+`#include <sense/fb.hpp>`<br/><br/>
 Link with `-lsense`.<br/>
 
 ## Documentation
