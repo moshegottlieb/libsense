@@ -39,7 +39,7 @@ HTML Documentation will be available in the `docs/html` folder.<br/>
 ## Examples
 See the `examples/` directory.<br/>
 Type:<br/>
-`make` to build both examples, `sensepaint`,`senseimage` and `sensetext`.<br/>
+`make` to build examples, `sensepaint`,`senseimage` and `sensetext`.<br/>
 Both `sensepaint` and `senseimage` require the [Image Wand](https://www.imagemagick.org/script/magick-wand.php) library (`sudo apt-get install libmagickwand-dev` on Raspbian and _probably_ Ubuntu), it's a part of the [Image Magick](https://www.imagemagick.org/) project.<br/>
 Once built, try something like:<br/>
 `./sensepaint green` or `./sensepaint "#ffbb00"` to paint all LEDs.<br/>
