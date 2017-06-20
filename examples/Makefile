@@ -1,6 +1,6 @@
 LDFLAGS+=-lsense
 WAND_LDFLAGS=`pkg-config --libs MagickWand`
-CFLAGS+=-g `pkg-config --cflags MagickWand`
+CFLAGS+=-g -O3 `pkg-config --cflags MagickWand`
 CXXFLAGS+=-std=c++11
 BUILDDIR=build
 SOURCESCXX = $(wildcard *.cpp)
@@ -13,7 +13,7 @@ DEPDIR := .d
 $(shell mkdir -p $(DEPDIR) >/dev/null)
 $(shell mkdir -p $(BUILDDIR) >/dev/null)
 
-TARGETS=senseimage sensepaint sensetext
+TARGETS=$(BUILDDIR)/senseimage $(BUILDDIR)/sensepaint $(BUILDDIR)/sensetext $(BUILDDIR)/senserainbow
 
 all: $(TARGETS)
 
@@ -39,14 +39,19 @@ $(DEPDIR)/%.d: ;
 
 .PHONY: clean
 
-senseimage: $(BUILDDIR)/senseimage.o
+$(BUILDDIR)/senseimage: $(BUILDDIR)/senseimage.o
 	@echo [LINK] $@
 	@$(CXX) $(CXXFLAGS) $(CFLAGS) $(BUILDDIR)/senseimage.o $(LDFLAGS) $(WAND_LDFLAGS) -o $@
 
-sensepaint: $(BUILDDIR)/sensepaint.o
+$(BUILDDIR)/senserainbow: $(BUILDDIR)/senserainbow.o
+	@echo [LINK] $@
+	@$(CXX) $(CXXFLAGS) $(CFLAGS) $(BUILDDIR)/senserainbow.o $(LDFLAGS) -o $@
+
+
+$(BUILDDIR)/sensepaint: $(BUILDDIR)/sensepaint.o
 	@echo [LINK] $@
 	@$(CXX) $(CXXFLAGS) $(CFLAGS) $(BUILDDIR)/sensepaint.o $(LDFLAGS) $(WAND_LDFLAGS) -o $@
 
-sensetext: $(BUILDDIR)/sensetext.o
+$(BUILDDIR)/sensetext: $(BUILDDIR)/sensetext.o
 	@echo [LINK] $@
 	@$(CC) $(CFLAGS) $(BUILDDIR)/sensetext.o $(LDFLAGS) -o $@

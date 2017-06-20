@@ -25,8 +25,8 @@ namespace sense {
         @throws std::runtime_error
         */
         bitmap(bool memory = false) throw (std::runtime_error){
-            bmp = memory?sense_alloc_bitmap():sense_alloc_fb();
-            if (!bmp){
+            _bmp = memory?sense_alloc_bitmap():sense_alloc_fb();
+            if (!_bmp){
                 throw std::runtime_error(sense_strerror(sense_errno()));
             }
         }
@@ -34,7 +34,7 @@ namespace sense {
         Cleanup and relinquish resources
         */
         virtual ~bitmap() noexcept{
-            sense_free_bitmap(bmp);   
+            sense_free_bitmap(_bmp);   
         }
         /**
         Set a pixel to a given color
@@ -43,7 +43,7 @@ namespace sense {
         @throws std::runtime_error
         */
         void setPixel(uint8_t x,uint8_t y,sense_color_t color) throw (std::runtime_error){
-            if (sense_bitmap_set_pixel(bmp,x,y,color) != 0){
+            if (sense_bitmap_set_pixel(_bmp,x,y,color) != 0){
                 throw std::runtime_error(sense_strerror(sense_errno()));
             }
         }
@@ -54,14 +54,14 @@ namespace sense {
         @see sense_bitmap_paint
         */
         void paint(sense_color_t color) noexcept{
-            sense_bitmap_paint(bmp,color);
+            sense_bitmap_paint(_bmp,color);
         }
         /**
         Copy contents of a bitmap to another bitmap.
         Can mix framebuffer and memory bitmaps.
         */
         bitmap& operator = (const bitmap& other) noexcept {
-            memcpy(sense_bitmap_get_buffer(bmp),sense_bitmap_get_buffer(const_cast<bitmap&>(other)),SENSE_BUFFER_SIZE);
+            memcpy(sense_bitmap_get_buffer(_bmp),sense_bitmap_get_buffer(const_cast<bitmap&>(other)),SENSE_BUFFER_SIZE);
             return *this;
         }
         /**
@@ -69,11 +69,46 @@ namespace sense {
         @return A bitmap handle.
         */
         operator sense_bitmap_t() noexcept{
-            return bmp;
+            return _bmp;
         }
     private:
-        sense_bitmap_t bmp;
+        sense_bitmap_t _bmp;
     };
+    
+
+    /**
+    @class color
+    @desc Color wrapper
+    */
+    class color {
+    public:
+        /**
+        Create a color (as easy as `{0xff,0xff,0xff}` for white)
+        @param r Red (0..255)
+        @param g Green (0..255)
+        @param b Blue (0..255)
+        */
+        color(uint8_t r,uint8_t g,uint8_t b) noexcept{
+            _color = sense_make_color_rgb(r,g,b);
+        }
+        /**
+        Create a color from an existing color
+        @param c Sense color
+        */
+        color(sense_color_t c) noexcept
+        :_color(c){
+
+        }
+        /**
+        @return sense_color_t raw type (RGB565 16 bit color)
+        */
+        operator sense_color_t() const noexcept {
+            return _color;
+        }
+    private:
+        sense_color_t _color;
+    };
+    
 
 }
 
