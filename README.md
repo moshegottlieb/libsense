@@ -26,7 +26,7 @@ That said, the build process is dead simple:<br/><br/>
 `sudo make install`<br/>
 <br/>
 Then from your C files:<br/><br/>
-`#include <sense/fb.h>`<br/>
+`#include <sense/fb.h>`<br/><br/>
 Or from your C++ files (can use the C version too, of course):<br/><br/>
 `#include <sense/fb.hpp>`<br/><br/>
 Link with `-lsense`.<br/>
