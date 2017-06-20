@@ -2,7 +2,7 @@
 SOURCES = $(wildcard *.c)
 OBJ = $(patsubst %.c,$(BUILDDIR)/%.o,$(SOURCES))
 PREFIX?=/usr
-CFLAGS+=-g -fPIC
+CFLAGS+=-g -fPIC -O3
 VERSION_MAJ=1
 VERSION_MIN=0.1
 TARGET_NAME=libsense
