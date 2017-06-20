@@ -11,8 +11,17 @@ It currently covers the framebuffer only but I promise to add support for the gy
 Find everything you need in `fb.h` or `fb.hpp` for the C++ flavor.<br/>
 <br/>
 ## Install
-(no dependencies, sweet!)<br/>
+
+Depending on your setup, you may want to allow the current user access to the devices, otherwise you'd need root access to run apps linked to libsense.<br/>
+In Raspbian:<br/>
+`sudo usermod -aG input,video,i2c {your username here}`
+Or change the permissions (not recommended) of:<br/>
+`/dev/fb1`, `/dev/i2c-1`, `/dev/input/event0`<br/>
+Currently, since libsense only works with the LED matrix (as a framebuffer), there are no dependencies.<br/>
+However, future versions will require `i2c`, in Raspbian:<br/>
+`sudo apt-get install libi2c-dev` and also: `sudo raspi-config` --> advanced options --> enable i2c<br/>
 <br/>
+That said, the build process is dead simple:<br/>
 `make`<br/>
 `sudo make install`<br/>
 <br/>
