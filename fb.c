@@ -8,12 +8,13 @@
 #include <sys/ioctl.h>
 #include <linux/fb.h>
 #include <sys/mman.h>
+#include <unistd.h>
  
 
 static int _sense_err = 0;
 
-inline void _sense_bitmap_fb_free(sense_bitmap_t bmp);
-inline void _sense_bitmap_mem_free(sense_bitmap_t bmp);
+void _sense_bitmap_fb_free(sense_bitmap_t bmp);
+void _sense_bitmap_mem_free(sense_bitmap_t bmp);
 
 const char* sense_strerror(int err){
     switch (err){
@@ -32,10 +33,10 @@ struct sense_bitmap {
     void (*dtor)(sense_bitmap_t);    
 };
 
-inline void _sense_bitmap_fb_free(sense_bitmap_t bmp){
+void _sense_bitmap_fb_free(sense_bitmap_t bmp){
     munmap(bmp->bmp,SENSE_BUFFER_SIZE);
 }
-inline void _sense_bitmap_mem_free(sense_bitmap_t bmp){
+void _sense_bitmap_mem_free(sense_bitmap_t bmp){
     free(bmp->bmp);
 }
 

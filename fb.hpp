@@ -1,6 +1,5 @@
 #ifndef _SENSE_FB_HPP
 #define _SENSE_FB_HPP
-
 #include "fb.h"
 #include <stdexcept>
 #include <cstring>
