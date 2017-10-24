@@ -42,6 +42,8 @@ Type:<br/>
 `make` to build examples, `sensepaint`,`senseimage`,`senserainbow` and `sensetext`.<br/>
 Built binaries are placed in the `build` directory.<br/>
 Both `sensepaint` and `senseimage` require the [Image Wand](https://www.imagemagick.org/script/magick-wand.php) library (`sudo apt-get install libmagickwand-dev` on Raspbian and _probably_ Ubuntu), it's a part of the [Image Magick](https://www.imagemagick.org/) project.<br/>
+Also, if you plan to use clang instead of gcc, make sure to install the openmp libraries (required by Image Magick):<br/>
+`sudo apt install libomp-dev`<br/>
 Once built, try something like:<br/>
 `build/sensepaint green` or `build/sensepaint "#ffbb00"` to paint all LEDs.<br/>
 `build/senseimage sense_logo.png` will draw the logo on the LED matrix.<br/>
