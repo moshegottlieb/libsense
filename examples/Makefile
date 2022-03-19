@@ -1,6 +1,7 @@
 LDFLAGS+=-lsense
-WAND_LDFLAGS=`pkg-config --libs MagickWand`
-CFLAGS+=-g -O3 `pkg-config --cflags MagickWand`
+WAND_LDFLAGS=`pkg-config --libs MagickWand` 
+CURL_LDFLAGS=`pkg-config --libs libcurl`
+CFLAGS+=-g -O3 `pkg-config --cflags MagickWand` `pkg-config --cflags libcurl` 
 CXXFLAGS+=-std=c++11
 BUILDDIR=build
 SOURCESCXX = $(wildcard *.cpp)
@@ -13,7 +14,9 @@ DEPDIR := .d
 $(shell mkdir -p $(DEPDIR) >/dev/null)
 $(shell mkdir -p $(BUILDDIR) >/dev/null)
 
-TARGETS=$(BUILDDIR)/senseimage $(BUILDDIR)/sensepaint $(BUILDDIR)/sensetext $(BUILDDIR)/senserainbow
+TARGETS=$(BUILDDIR)/senseimage $(BUILDDIR)/sensepaint $(BUILDDIR)/sensetext $(BUILDDIR)/senserainbow $(BUILDDIR)/openweathermap
+
+IMAGE_OBJ = $(BUILDDIR)/image.o
 
 all: $(TARGETS)
 
@@ -39,9 +42,9 @@ $(DEPDIR)/%.d: ;
 
 .PHONY: clean
 
-$(BUILDDIR)/senseimage: $(BUILDDIR)/senseimage.o
+$(BUILDDIR)/senseimage: $(BUILDDIR)/senseimage.o $(IMAGE_OBJ)
 	@echo [LINK] $@
-	@$(CXX) $(CXXFLAGS) $(CFLAGS) $(BUILDDIR)/senseimage.o $(LDFLAGS) $(WAND_LDFLAGS) -o $@
+	@$(CXX) $(CXXFLAGS) $(CFLAGS) $(BUILDDIR)/senseimage.o $(IMAGE_OBJ) $(LDFLAGS) $(WAND_LDFLAGS) -o $@
 
 $(BUILDDIR)/senserainbow: $(BUILDDIR)/senserainbow.o
 	@echo [LINK] $@
@@ -55,3 +58,7 @@ $(BUILDDIR)/sensepaint: $(BUILDDIR)/sensepaint.o
 $(BUILDDIR)/sensetext: $(BUILDDIR)/sensetext.o
 	@echo [LINK] $@
 	@$(CC) $(CFLAGS) $(BUILDDIR)/sensetext.o $(LDFLAGS) -o $@
+
+$(BUILDDIR)/openweathermap: $(BUILDDIR)/openweathermap.o $(IMAGE_OBJ)
+	@echo [LINK] $@
+	@$(CXX) $(CXXFLAGS) $(CFLAGS) $(BUILDDIR)/openweathermap.o $(IMAGE_OBJ) $(LDFLAGS) $(WAND_LDFLAGS) $(CURL_LDFLAGS) -o $@

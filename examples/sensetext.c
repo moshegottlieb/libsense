@@ -5,10 +5,8 @@
 #include <string.h>
 
 // Replace with any of the fonts in "fonts" directory
-#include "fonts/5x5_font.h"
-
-//#include "fonts/BMSPA_font.h"
-//#define CHAR_WIDTH 8
+//#include "fonts/5x5_font.h"
+#include "fonts/pzim3x5_font.h"
 
 #define CHAR_WIDTH (sizeof(font) / 96)
 #define CHAR_HEIGHT 8

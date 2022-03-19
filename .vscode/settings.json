@@ -1,6 +1,8 @@
 {
     "files.associations": {
         "bitset": "cpp",
-        "algorithm": "cpp"
+        "algorithm": "cpp",
+        "stdexcept": "cpp",
+        "exception": "cpp"
     }
 }

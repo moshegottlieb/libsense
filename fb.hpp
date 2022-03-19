@@ -23,11 +23,26 @@ namespace sense {
         @param memory When true, a memory bitmap is created, otherwise a framebuffer device is used.
         @throws std::runtime_error
         */
-        bitmap(bool memory = false) throw (std::runtime_error){
+        bitmap(bool memory = false, bool clear = false) throw (std::runtime_error){
             _bmp = memory?sense_alloc_bitmap():sense_alloc_fb();
             if (!_bmp){
                 throw std::runtime_error(sense_strerror(sense_errno()));
             }
+            if (clear){
+                sense_bitmap_paint(_bmp,0);
+            }
+        }
+
+
+
+
+        /**
+         Copy CTOR of a MEMORY bitmap
+         @param 
+         */
+        bitmap(const bitmap& other){
+            _bmp = sense_alloc_bitmap();
+            *this = other;
         }
         /**
         Cleanup and relinquish resources
