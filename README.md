@@ -55,7 +55,7 @@ It's available [here](http://jared.geek.nz/2014/jan/custom-fonts-for-microcontro
 Just type something like: `build/sensetext "hello world!"` and enjoy the magic of text printing out on your 8x8 LED matrix.<br/>
 I do not recommend on reading [Ulysses](https://en.wikipedia.org/wiki/Ulysses_(novel)) this way.  
   
-Another new addition is the **OpenWeatherMap** addition.  
+New example **OpenWeatherMap**   
 --
 Shows the temperature on the sensehat LED matrix.  
 Supports scrolling for long figures (-10 and colder) and color coding, becomes bluer as it gets colder, and more red as it's hotter.  
