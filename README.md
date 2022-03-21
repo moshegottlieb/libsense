@@ -73,6 +73,10 @@ To install it as a systemd daeomn:
 4. Copy `openweathermap/openweathermap.service` to `/etc/systemd/system/`
 5. Install the service: `sudo systemctl enable openweathermap`
 6. Run it (it will start on boot otherwise): `sudo service openweathermap start`  
+
+Why not use the built in sensehat temp sensor(s)? Because there's a board, LEDs and a CPU right next to it, and those generate allot of heat.  
+It may work reasonably in space, but not on earth :-)
+
 <br/>
 ## C++
 Writing shared libraries in C is easy.  
