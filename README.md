@@ -53,13 +53,31 @@ How about writing something?<br/>
 Luckily, Jared Sanson has a nice collection of 6x8 fonts exactly for this purpose (well, I suppose not _exactly_ for this purpose).<br/>
 It's available [here](http://jared.geek.nz/2014/jan/custom-fonts-for-microcontrollers) and it's used by the `sensetext` example.<br/>
 Just type something like: `build/sensetext "hello world!"` and enjoy the magic of text printing out on your 8x8 LED matrix.<br/>
-I do not recommend on reading [Ulysses](https://en.wikipedia.org/wiki/Ulysses_(novel)) this way.
+I do not recommend on reading [Ulysses](https://en.wikipedia.org/wiki/Ulysses_(novel)) this way.  
+Another new addition is the **OpenWeatherMap** addition.  
+Shows the temperature on the sensehat LED matrix.  
+Supports scrolling for long figures (-10 and colder) and color coding, becomes bluer as it gets colder, and more red as it's hotter.  
+You want it to be nice and green :-).  
+It currently takes the temperature value from a small ESP8266 project I have (will github it soon) that simply reads the temperature upon request to it's webserver, but there's also a provider interface, just edit the code and use a different REST API provider to fetch the weather on your own.  
+A darksky API sample is available, but you can't sign up for a new API key, after they were bought by Apple, but it should get you started on using a different provider.  
+Just use your own URL and change the code that fetches the data from the JSON response.  
+...oh yeh, the temp is in celsius, I live in europe.  
+To switch to Fahrenheit, use `F = C * 1.8 + 32`.  
+You may want to do it after it figures out the color coding, as the color coding thresholds are set to celsius.  
+To install it as a systemd daeomn:
+1. `make && sudo make install`
+2. Inside `examples`, run `make`
+3. Copy `build/openweathermap` to `/usr/local/bin/openweatheramp`.
+4. Copy `openweathermap/openweathermap.service` to `/etc/systemd/system/`
+5. Install the service: `sudo systemctl enable openweathermap`
+6. Run it (it will start on boot otherwise): `sudo service openweathermap start`  
 <br/>
 ## C++
-Writing shared libraries in C is easy.<br/>
-The rules for when to bump up the so name is simple and clear.<br/>
-When dealing with C++ - that's not the case.<br/>
-The list of things that break binary compatibility is very long, and it's super easy to break.<br/>
+Writing shared libraries in C is easy.  
+The rules for when to bump up the so name is simple and clear.  
+When dealing with C++ - that's not the case.  
+Sorry for all the warnings about specifying exception type, should port it to modern C++ at some point.   
+The list of things that break binary compatibility is very long, and it's super easy to break.  
 Since the C++ code is just a wrapper - I decided to include it as an inline header, that way the shared library doesn't have any C++ issues.<br/>
 
 ## Contributing to libsense
