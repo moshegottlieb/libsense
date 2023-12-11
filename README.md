@@ -1,4 +1,7 @@
 # libsense ![logo](https://raw.githubusercontent.com/moshegottlieb/libsense/master/examples/sense_logo.png)
+
+[![C/C++ CI](https://github.com/moshegottlieb/libsense/actions/workflows/c-cpp.yml/badge.svg)](https://github.com/moshegottlieb/libsense/actions/workflows/c-cpp.yml)
+
 ### Sense HAT for the Raspberry Pi C/C++ API
 I don't know about you guys, but I'm not much of a python guy.<br/>
 While I can code in just about any programming language - I tend to stick to compiled languages.<br/>
@@ -78,12 +81,14 @@ Why not use the built in sensehat temp sensor(s)? Because there's a board, LEDs 
 It may work reasonably in space, but not on earth :-)
 
 <br/>
+
 ## C++
-Writing shared libraries in C is easy.  
-The rules for when to bump up the so name is simple and clear.  
-When dealing with C++ - that's not the case.  
-Sorry for all the warnings about specifying exception type, should port it to modern C++ at some point.   
-The list of things that break binary compatibility is very long, and it's super easy to break.  
+
+Writing shared libraries in C is easy.<br/>
+The rules for when to bump up the so name is simple and clear.<br/>
+When dealing with C++ - that's not the case.<br/>
+Sorry for all the warnings about specifying exception type, should port it to modern C++ at some point.<br/>
+The list of things that break binary compatibility is very long, and it's super easy to break.<br/>
 Since the C++ code is just a wrapper - I decided to include it as an inline header, that way the shared library doesn't have any C++ issues.<br/>
 
 ## Contributing to libsense
